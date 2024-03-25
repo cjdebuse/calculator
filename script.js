@@ -1,15 +1,25 @@
-function add (a, b) {
-    return a + b;
-}
+let operand1;
+let operand2;
+let operator;
 
-function subtract (a, b) {
-    return a - b;
-}
+const operations = {
+    calculate: function (a, o , b) {
+        return this[o](a, b);
+    },
 
-function multiply (a, b) {
-    return a * b;
-}
+    "+": function (a, b) {
+        return a + b;
+    },
 
-function divide (a, b) {
-    return a / b;
-}
+    "-": function (a, b) {
+        return a - b;
+    },
+
+    "*": function (a, b) {
+        return a * b;
+    },
+
+    "/": function (a, b) {
+        return a / b;
+    }
+};
