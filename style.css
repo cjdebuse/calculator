@@ -1,23 +1,88 @@
 body {
+    display: flex;
     height: 100vh;
+    margin: 0;
     width: 100vw;
 }
 
 button {
-    height: 10vh;
-    width: 10vw;
+    border: 1px solid black;
+    border-radius: 0;
+    font-size: 4vh;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: lightgray;
+}
+
+button:active {
+    background-color: gray;
+}
+
+.display-area {
+    border: 1px solid black;
+    flex: 2;
+    font-size: 30vh;
+    line-height: 30vh;
+    padding: 0 2vw;
+    text-align: right;
+}
+
+.functions {
+    display: flex;
+    flex: 0.5;
+}
+
+.functions > button {
+    flex: 1;
 }
 
 .inputs {
     display: flex;
+    flex: 3;
+}
+
+.calculator {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.number-pad {
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+}
+
+.number-row {
+    display: flex;
+    flex: 1;
+}
+
+.number-row > button {
+    flex: 1;
 }
 
 .operators {
     display: flex;
     flex-direction: column;
+    flex: 1;
 }
 
-#display {
-    height: 10vh;
-    width: 40vw;
+.operators > button {
+    background-color: orange;
+    flex: 1;
+}
+
+.operators > button:hover{
+    background-color: goldenrod;
+}
+
+.operators > button:active{
+    background-color: darkgoldenrod;
+}
+
+#equals {
+    flex: 2;
 }
