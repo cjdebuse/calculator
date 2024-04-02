@@ -21,12 +21,18 @@ button:active {
 }
 
 .display-area {
+    align-items: center;
     border: 1px solid black;
+    display: flex;
     flex: 2;
-    font-size: 30vh;
-    line-height: 30vh;
     padding: 0 2vw;
     text-align: right;
+}
+
+.display-area > p {
+    flex: 1;
+    margin: 0;
+    font-size: 20vh;
 }
 
 .functions {
