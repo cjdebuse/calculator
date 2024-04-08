@@ -23,21 +23,27 @@ const operations = {
         return a - b;
     },
 
-    "*": function (a, b) {
+    "×": function (a, b) {
         return a * b;
     },
 
-    "/": function (a, b) {
+    "÷": function (a, b) {
         return a / b;
     }
 };
 
 function inputClicked (event) {
-    switch (event.target.className) {
+    const obj = event.target;
+    const objClass = obj.className;
+    const objText = obj.textContent;
+
+    switch (objClass) {
         case 'number':
-            buildOperand(event.target.textContent);
+            buildOperand(objText);
             break;
         case 'operator':
+            expression['operator'] = objText;
+            display.textContent = expression['operator'];
             break;
     }
 }
@@ -45,9 +51,7 @@ function inputClicked (event) {
 function buildOperand (val) {
     let operand = '';
 
-    if (!expression['operator']) {
-        operand = 'operand1';
-    }
+    operand = !expression['operator'] ? 'operand1' : 'operand2';
 
     switch (val) {
         case '.':
