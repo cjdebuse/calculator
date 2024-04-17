@@ -60,16 +60,23 @@ function buildOperand (val) {
             }
             break;
         case '±':
-            if (!expression[operand].startsWith('-')) {
-                expression[operand] = expression[operand].padStart(expression[operand].length + 1, '-');
-            } else {
+            if (!expression[operand].startsWith('-') && 
+            expression[operand] !== '0') {
+                expression[operand] = expression[operand].
+                    padStart(expression[operand].length + 1, '-');
+            } else if (expression[operand].startsWith('-')) {
                 expression[operand] = expression[operand].slice(1);
             }
             break;
         default:
-            expression[operand] = 
+            const digits = expression[operand].
+                replace('-', '').replace('.', '');
+            if (digits.length <= 11) {
+                expression[operand] = 
                 expression[operand] === '0' ? val : 
                 expression[operand] + val;
+            }
+            
     }
 
     display.textContent = expression[operand];
