@@ -12,7 +12,9 @@ let expression = {
 
 const operations = {
     calculate: function (a, o , b) {
-        return this[o](a, b);
+        const numA = Number(a);
+        const numB = Number(b);
+        return this[o](numA, numB);
     },
 
     "+": function (a, b) {
@@ -42,8 +44,7 @@ function inputClicked (event) {
             buildOperand(objText);
             break;
         case 'operator':
-            expression['operator'] = objText;
-            display.textContent = expression['operator'];
+            handleOperator(objText);
             break;
     }
 }
@@ -80,4 +81,31 @@ function buildOperand (val) {
     }
 
     display.textContent = expression[operand];
+}
+
+function handleOperator (op) {
+    switch (op) {
+        case '=':
+            if (!expression['operator'] || !expression['operand2']) {
+                return;
+            }
+        default:
+            if (!expression['operand2']) {
+                expression['operator'] = op;
+                return;
+            }
+    }
+
+    display.textContent = 
+    operations.calculate(expression['operand1'], 
+    expression['operator'], expression['operand2']);
+
+    const newOp = op === '=' ? '' : op;
+    resetExpression(display.textContent, newOp);
+}
+
+function resetExpression (a = '0', o = '', b = '') {
+    expression['operand1'] = a;
+    expression['operator'] = o;
+    expression['operand2'] = b;
 }
