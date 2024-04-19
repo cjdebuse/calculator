@@ -1,8 +1,8 @@
 const body = document.querySelector('body');
 const display = body.querySelector('.display-area > p');
-const inputs = body.querySelector('.inputs');
+const interface = body.querySelector('.interface');
 
-inputs.addEventListener('click', inputClicked);
+interface.addEventListener('click', interfaceClicked);
 
 let expression = {
     operand1: '0',
@@ -25,16 +25,19 @@ const operations = {
         return a - b;
     },
 
-    "×": function (a, b) {
+    "×": function (a, b) {s
         return a * b;
     },
 
     "÷": function (a, b) {
+        if (b === 0) {
+            return "Undefined"
+        }
         return a / b;
     }
 };
 
-function inputClicked (event) {
+function interfaceClicked (event) {
     const obj = event.target;
     const objClass = obj.className;
     const objText = obj.textContent;
@@ -45,6 +48,18 @@ function inputClicked (event) {
             break;
         case 'operator':
             handleOperator(objText);
+            break;
+        case 'function':
+            handleFunction(objText);
+            break;
+    }
+}
+
+function handleFunction (val) {
+    switch (val) {
+        case 'Clear':
+            resetExpression();
+            display.textContent = expression['operand1'];
             break;
     }
 }

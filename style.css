@@ -44,9 +44,15 @@ button:active {
     flex: 1;
 }
 
+.interface {
+    display: flex;
+    flex: 4;
+    flex-direction: column;
+}
+
 .inputs {
     display: flex;
-    flex: 3;
+    flex: 4;
 }
 
 .calculator {
