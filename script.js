@@ -25,7 +25,7 @@ const operations = {
         return a - b;
     },
 
-    "×": function (a, b) {s
+    "×": function (a, b) {
         return a * b;
     },
 
