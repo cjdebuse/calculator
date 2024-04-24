@@ -7,7 +7,8 @@ interface.addEventListener('click', interfaceClicked);
 let expression = {
     operand1: '0',
     operand2: '',
-    operator: ''
+    operator: '',
+    prevResult: false
 };
 
 const operations = {
@@ -65,6 +66,8 @@ function handleFunction (val) {
 }
 
 function buildOperand (val) {
+    if (expression['prevResult']) {resetExpression()}
+
     let operand = '';
 
     operand = !expression['operator'] ? 'operand1' : 'operand2';
@@ -116,11 +119,12 @@ function handleOperator (op) {
     expression['operator'], expression['operand2']);
 
     const newOp = op === '=' ? '' : op;
-    resetExpression(display.textContent, newOp);
+    resetExpression(display.textContent, newOp, '', true);
 }
 
-function resetExpression (a = '0', o = '', b = '') {
+function resetExpression (a = '0', o = '', b = '', r = false) {
     expression['operand1'] = a;
     expression['operator'] = o;
     expression['operand2'] = b;
+    expression['prevResult'] = r;
 }
