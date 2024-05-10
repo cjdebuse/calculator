@@ -51,16 +51,29 @@ function interfaceClicked (event) {
             handleOperator(objText);
             break;
         case 'function':
-            handleFunction(objText);
+            handleFunction(obj.id);
             break;
     }
 }
 
 function handleFunction (val) {
     switch (val) {
-        case 'Clear':
+        case 'clear':
             resetExpression();
             display.textContent = expression['operand1'];
+            break;
+        case 'backspace':
+            let op;
+            switch (display.textContent) {
+                case expression['operand1']:
+                    op = 'operand1';
+                    break;
+                case expression['operand2']:
+                    op = 'operand2';
+                    break;
+            }
+            expression[op] = expression[op].slice(0, -1);
+            display.textContent = expression[op];
             break;
     }
 }
