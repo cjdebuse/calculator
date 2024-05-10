@@ -65,11 +65,11 @@ function handleFunction (val) {
         case 'backspace':
             let op;
             switch (display.textContent) {
-                case expression['operand1']:
-                    op = 'operand1';
-                    break;
                 case expression['operand2']:
                     op = 'operand2';
+                    break;
+                case expression['operand1']:
+                    op = 'operand1';
                     break;
             }
             expression[op] = expression[op].slice(0, -1);
