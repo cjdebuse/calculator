@@ -69,11 +69,15 @@ function handleFunction (val) {
                     op = 'operand2';
                     break;
                 case expression['operand1']:
-                    op = 'operand1';
+                    if (!expression['operator']) {
+                        op = 'operand1';
+                    }
                     break;
             }
-            expression[op] = expression[op].slice(0, -1);
-            display.textContent = expression[op];
+            if (op) {
+                expression[op] = expression[op].slice(0, -1);
+                display.textContent = expression[op];
+            }
             break;
     }
 }
