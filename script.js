@@ -132,9 +132,10 @@ function handleOperator (op) {
             }
     }
 
-    display.textContent = 
-    operations.calculate(expression['operand1'], 
-    expression['operator'], expression['operand2']);
+    let result = operations.calculate(expression['operand1'], 
+        expression['operator'], expression['operand2']);
+
+    display.textContent = formatDisplayVal(result);
 
     const newOp = op === '=' ? '' : op;
     resetExpression(display.textContent, newOp, '', true);
@@ -145,4 +146,11 @@ function resetExpression (a = '0', o = '', b = '', r = false) {
     expression['operator'] = o;
     expression['operand2'] = b;
     expression['prevResult'] = r;
+}
+
+function formatDisplayVal (val) {
+    if (typeof val === 'number' && val.toString().length > 14) {
+        val = val.toPrecision(7);
+    }
+    return val;
 }
