@@ -83,7 +83,8 @@ function handleFunction (val) {
 }
 
 function buildOperand (val) {
-    if (expression['prevResult']) {resetExpression()}
+    if (expression['prevResult'] && !expression['operator']) {
+        resetExpression()}
 
     let operand = '';
 
