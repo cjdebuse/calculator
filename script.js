@@ -54,7 +54,7 @@ function interfaceClicked (event) {
             buildOperand(objText);
             break;
         case 'operator':
-            if (obj.id !== "=") {
+            if (obj.id !== "equals") {
                 activeOp = obj;
                 activeOp.classList.add('active');
             }
