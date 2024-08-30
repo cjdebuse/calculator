@@ -82,16 +82,16 @@ button:active {
     flex: 1;
 }
 
-.operators > button {
+.operator {
     background-color: orange;
     flex: 1;
 }
 
-.operators > button:hover{
+.operator:hover{
     background-color: goldenrod;
 }
 
-.operators > button:active{
+.operator.active {
     background-color: darkgoldenrod;
 }
 

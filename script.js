@@ -1,6 +1,7 @@
 const body = document.querySelector('body');
 const display = body.querySelector('.display-area > p');
 const interface = body.querySelector('.interface');
+let activeOp;
 
 interface.addEventListener('click', interfaceClicked);
 
@@ -43,11 +44,20 @@ function interfaceClicked (event) {
     const objClass = obj.className;
     const objText = obj.textContent;
 
+    if (activeOp && activeOp != obj) {
+        activeOp.classList.remove('active');
+        activeOp = "";
+    }
+
     switch (objClass) {
         case 'number':
             buildOperand(objText);
             break;
         case 'operator':
+            if (obj.id !== "=") {
+                activeOp = obj;
+                activeOp.classList.add('active');
+            }
             handleOperator(objText);
             break;
         case 'function':
