@@ -8,6 +8,7 @@ body {
 button {
     border: 1px solid black;
     border-radius: 0;
+    color: black;
     font-size: 4vh;
     font-weight: bold;
 }
